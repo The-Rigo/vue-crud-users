@@ -1,9 +1,12 @@
-<script setup>
-
+<script>
+export default {
+  // Componente de la tarjeta
+  data: () => ({
+    show: false,
+  }),
+};
 </script>
 
 <template>
-  <main>
-    <h1>Welcome Vue 3</h1>
-  </main>
+  <h1>Welcome to web</h1>
 </template>

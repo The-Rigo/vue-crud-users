@@ -7,6 +7,7 @@
       data() {
         return{
           userId:'',
+          visible: false,
           model: {
             user:{
               username: '',
@@ -38,6 +39,7 @@
           })
         }
       },
+
       mounted() {
         this.userId=this.$route.params.id;
         this.getUserById(this.userId);
@@ -45,50 +47,93 @@
     }
 </script>
 <template>
-  <div class="container mt-5">
-    <div class="card">
-      <div class="card-header">
-        <h4>edit user</h4>
-      </div>
-      <div class="card-body">
-        <div class="mb-3">
-          <label for="">Username</label>
-          <input type="text" v-model="model.user.username" class="form-control">
-        </div>
-        <div class="mb-3">
-          <label for="">Password</label>
-          <input type="text" v-model="model.user.password" class="form-control">
-        </div>
-        <div class="mb-3">
-          <label for="">Email</label>
-          <input type="text" v-model="model.user.email" class="form-control">
-        </div>
-        <div class="mb-3">
-          <label for="">First Name</label>
-          <input type="text" v-model="model.user.first_name" class="form-control">
-        </div>
-        <div class="mb-3">
-          <label for="">Last Name</label>
-          <input type="text" v-model="model.user.last_name" class="form-control">
-        </div>
-        <div class="mb-3">
-          <label for="">Age</label>
-          <input type="text" v-model="model.user.age" class="form-control">
-        </div>
-        <div class="mb-3">
-          <label for="">Birthday</label>
-          <input type="text" v-model="model.user.birth_day" class="form-control">
-        </div>
-        <div class="mb-3">
-          <button type="button" @click="editUser" class="btn btn-primary">
-            Edit
-          </button>&nbsp;&nbsp;
-          <RouterLink to="/users" class="btn btn-primary">
-            Back
-          </RouterLink>
-        </div>
-      </div>
-    </div>
+
+  <!-- Acciones de la tarjeta, como botones, detallas, etc. -->
+  <div>
+
+    <v-card
+        class="mx-auto pa-12 pb-8"
+        elevation="8"
+        max-width="448"
+        rounded="lg"
+    >
+      <v-card-item class="d-flex justify-center mb-6"><h4>EDIT USER</h4></v-card-item>
+      <v-text-field
+          density="compact"
+          placeholder="Register username"
+          variant="outlined"
+          v-model="model.user.username"
+          label="Username"
+      ></v-text-field>
+      <v-text-field
+          :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
+          :type="visible ? 'text' : 'password'"
+          density="compact"
+          placeholder="Register password"
+          label="Password"
+          variant="outlined"
+          v-model="model.user.password"
+          @click:append-inner="visible = !visible"
+      ></v-text-field>
+      <v-text-field
+          density="compact"
+          placeholder="Register email"
+          variant="outlined"
+          v-model="model.user.email"
+          label="Email"
+      ></v-text-field>
+      <v-text-field
+          density="compact"
+          placeholder="Register first name"
+          variant="outlined"
+          v-model="model.user.first_name"
+          label="First Name"
+      ></v-text-field>
+      <v-text-field
+          density="compact"
+          placeholder="Register last name"
+          variant="outlined"
+          v-model="model.user.last_name"
+          label="Last Name"
+      ></v-text-field>
+      <v-text-field
+          density="compact"
+          placeholder="Register Age"
+          variant="outlined"
+          v-model="model.user.age"
+          label="Age"
+      ></v-text-field>
+
+      <v-text-field
+          density="compact"
+          placeholder="Register birthday"
+          variant="outlined"
+          v-model="model.user.birth_day"
+          type="date"
+          label="Birthday"
+          class="mt-3"
+      ></v-text-field>
+
+      <v-btn
+          block
+          class="mb-1"
+          color="teal-darken-1"
+          size="large"
+          @click="editUser"
+      >
+        Save
+      </v-btn>
+      <RouterLink to="/users" tag="v-btn">
+        <v-btn
+            block
+            class="mb-1"
+            color="indigo-darken-1"
+            size="large"
+        >
+          Back
+        </v-btn>
+      </RouterLink>
+    </v-card>
   </div>
 </template>
 
