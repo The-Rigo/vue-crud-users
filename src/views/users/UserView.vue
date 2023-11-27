@@ -24,6 +24,14 @@ export default {
             // handle error on UI site
           })
       }
+    },
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      const day = date.getDate().toString().padStart(2, '0'); // Obtiene el día y asegura que tenga dos dígitos
+      const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Obtiene el mes (los meses comienzan desde 0)
+      const year = date.getFullYear();
+
+      return `${day}-${month}-${year}`;
     }
   },
   mounted() {
@@ -66,7 +74,7 @@ export default {
                 <td>{{ user.first_name }}</td>
                 <td>{{ user.last_name }}</td>
                 <td>{{ user.age }}</td>
-                <td>{{ user.birth_day.toString().replace(",","/").replace(",","/") }}</td>
+                <td>{{ formatDate(user.birth_day) }}</td>
                 <td>
                   <RouterLink :to="{ path: '/users/'+ user.id + '/edit' }" class="btn btn-success">
                     Edit
