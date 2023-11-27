@@ -14,6 +14,16 @@ export default {
       axios.get('http://localhost:8081/v1/users?detailed=1').then(res=> {
         this.users = res.data;
       })
+    },
+
+    deleteUserById(userId){
+      if(confirm("Are you sure, you want to delete this data?")){
+          axios.delete(`http://localhost:8081/v1/users/${userId}`).then(res=> {
+            this.getUsers();
+          }).catch(function (error){
+            // handle error on UI site
+          })
+      }
     }
   },
   mounted() {
