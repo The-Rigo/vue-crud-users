@@ -1,9 +1,12 @@
-<script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+<script>
+export default {
+  // Componente de la tarjeta
+  data: () => ({
+    show: false,
+  }),
+};
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <h1>Welcome to web</h1>
 </template>
