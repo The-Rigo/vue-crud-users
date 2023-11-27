@@ -33,7 +33,7 @@ export default {
       const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Obtiene el mes (los meses comienzan desde 0)
       const year = date.getFullYear();
 
-      return `${day}-${month}-${year}`;
+      return `${day}/${month}/${year}`;
     },
     toggleDetail(userId) {
       // Si el ID del usuario es igual al que ya está mostrando, ocultar el detalle
@@ -51,14 +51,11 @@ export default {
   <div class="users">
     <div class="card">
       <div class="card-header">
-        <h4>
-          Users
           <RouterLink to="/users/create" tag="v-btn">
             <v-btn>
-              Add User
+              ADD USER
             </v-btn>
           </RouterLink>
-        </h4>
       </div>
 
     <tbody v-if="users.length > 0">
@@ -75,7 +72,7 @@ export default {
           elevation="16" >
         <v-card-item>
           <v-card-title>
-            Username:  {{ user.username }}
+            {{ index +1 }}. Username:  {{ user.username }}
           </v-card-title>
           <v-card-subtitle>
             Email: {{ user.email }}
